@@ -87,7 +87,7 @@ func (api *PublicSeeleAPI) AddTx(tx *types.Transaction, result *bool) error {
 	var err error
 	if shard != common.LocalShardNumber {
 		if err = tx.ValidateWithoutState(); err == nil {
-		    api.s.seeleProtocol.SendDifferentShardTx(tx, shard)
+			api.s.seeleProtocol.SendDifferentShardTx(tx, shard)
 		}
 	} else {
 		err = api.s.txPool.AddTransaction(tx)
